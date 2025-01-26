@@ -390,7 +390,7 @@
 
 .submenu__cat {
     width: calc(100% / 3);
-    padding: 0 0 0 60px;
+    padding: 0 0 0 40px;
     margin-bottom: 0;
 }
 
@@ -1437,4 +1437,17 @@
     .detail-new__bottom_descr {
         font-size: 14px;
     }
+}
+.submenu__wrapper {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    max-height: 400px;
+    flex-direction: column;
+}
+.submenu {
+    padding-top: 20px;
+}
+.submenu__title {
+    margin-bottom: 5px;
 }
