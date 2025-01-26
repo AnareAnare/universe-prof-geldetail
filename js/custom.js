@@ -79,6 +79,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     })
 
+// Открытие меню
+$('.jsMenuOpen').on('click',function (e) {
+    e.preventDefault();
+    openMenu();
+});
+
+//Закрытие меню
+$('body').on('click', function (e) {
+    let target = $(e.target);
+
+    if (target.hasClass('mmenu active') || target.closest('.jsMenuClose').length > 0) {
+        closeMenu();
+    }
+});
+// Функция убирает прокрутку страницы
+function setOverflow() {
+    $('body').addClass('overflow');
+}
+
+// Функция возвращает прокрутку страницы
+function removeOverflow() {
+    $('body').removeClass('overflow');
+}
+
+
+
+// FUNCTIONS
+// Функция отрытия меню
+function openMenu() {
+    let menu = $('.mmenu');
+    menu.addClass('active');
+    setOverflow();
+}
+
+// Функция закрытия меню
+function closeMenu() {
+    let menu = $('.mmenu'),
+        wrappers = menu.find('.mmenu__wrapper');
+    menu.removeClass('active');
+    wrappers.removeClass('active');
+    removeOverflow();
+}
+
 
 });
 
