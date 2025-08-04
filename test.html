@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимация</title>
+    <style>
+        .rain-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url(./BGGel\ 1.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+
+.rain-drop {
+  position: absolute;
+  top: -40px;
+  width: 6px;
+  height: 13px;
+  background: rgba(255, 146, 0, 0.54);
+  border-radius: 70% 70% 90% 90% / 60% 60% 100% 100%;
+  box-shadow: 0 0 14px 4px rgba(93,204,255,0.45);
+  pointer-events: none;
+  animation-name: drop-fall;
+  animation-timing-function: cubic-bezier(.31,.95,.45,1.03);
+  animation-iteration-count: infinite;
+}
+
+.rain-drop .splash {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.splash-line {
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(to top, #53deff 60%, #ffffff 100%);
+  opacity: 0;
+  border-radius: 4px;
+  box-shadow: 0 0 9px 2px #aefaffcc, 0 0 3px 1px #b7e6ff66;
+  transform: scale(0) translateY(0);
+  transition: opacity .1s;
+  animation-name: splash-explode;
+  animation-timing-function: cubic-bezier(.14,.8,.57,1.06);
+  animation-iteration-count: inherit;
+  animation-duration: inherit;
+  animation-delay: inherit;
+  /* Сделаем брызги сверху капли */
+  z-index: 3;
+}
+
+/* Капля и ее брызги полностью синхронизированы */
+.rain-drop,
+.rain-drop .splash-line {
+  animation-duration: inherit;
+  animation-delay: inherit;
+}
+
+@keyframes drop-fall {
+  0%   { opacity: 0; top: -40px;}
+  10%  { opacity: 1;}
+  82%  { top: 80%;}
+  87%  { opacity: 1;}
+  91%  { opacity: 1;}
+  94%  { opacity: 1; top: 100%;} /* Капля исчезает когда появляются брызги */
+  100% { opacity: 1; top: 100%;}
+}
+
+/* Яркая анимация для брызг */
+@keyframes splash-explode {
+  0%, 93% { opacity: 0; transform: scale(0) translateY(0); }
+  94%     { opacity: 1; transform: scale(1.1) translateY(-10px);}
+  98%     { opacity: 1; transform: scale(1.22) translateY(-36px);}
+  100%    { opacity: 0; transform: scale(0.5) translateY(-49px);}
+}
+    </style>
+</head>
+<body>
+   <div class="rain-container">
+    <div class="wrapper">
+<div class="rain-drop" style="left: 5%; animation-duration: 1.8s; animation-delay: 0.35s;">
+    </div>
+    <div class="splash">
+      <div class="splash-line" style="transform: rotate(-65deg);"></div>
+      <div class="splash-line" style="transform: rotate(-35deg);"></div>
+      <div class="splash-line" style="transform: rotate(-10deg);"></div>
+      <div class="splash-line" style="transform: rotate(25deg);"></div>
+      <div class="splash-line" style="transform: rotate(50deg);"></div>
+      <div class="splash-line" style="transform: rotate(75deg);"></div>
+    </div>
+    </div>
+  
+  
+  <div class="rain-drop" style="left: 19%; animation-duration: 1.5s; animation-delay: 0.07s;">
+    <div class="splash">
+      <div class="splash-line" style="transform: rotate(-80deg);"></div>
+      <div class="splash-line" style="transform: rotate(-15deg);"></div>
+      <div class="splash-line" style="transform: rotate(15deg);"></div>
+      <div class="splash-line" style="transform: rotate(50deg);"></div>
+    </div>
+  </div>
+  <div class="rain-drop" style="left: 33%; animation-duration: 2.2s; animation-delay: 0.2s;">
+    <div class="splash">
+      <div class="splash-line" style="transform: rotate(-90deg);"></div>
+      <div class="splash-line" style="transform: rotate(-45deg);"></div>
+      <div class="splash-line" style="transform: rotate(0deg);"></div>
+      <div class="splash-line" style="transform: rotate(45deg);"></div>
+      <div class="splash-line" style="transform: rotate(90deg);"></div>
+    </div>
+  </div>
+  <div class="rain-drop" style="left: 49%; animation-duration: 1.7s; animation-delay: 0.8s;">
+    <div class="splash">
+      <div class="splash-line" style="transform: rotate(-75deg);"></div>
+      <div class="splash-line" style="transform: rotate(-35deg);"></div>
+      <div class="splash-line" style="transform: rotate(5deg);"></div>
+      <div class="splash-line" style="transform: rotate(38deg);"></div>
+      <div class="splash-line" style="transform: rotate(70deg);"></div>
+    </div>
+  </div>
+  <div class="rain-drop" style="left: 65%; animation-duration: 2.0s; animation-delay: 0.4s;">
+    <div class="splash">
+      <div class="splash-line" style="transform: rotate(-93deg);"></div>
+      <div class="splash-line" style="transform: rotate(-40deg);"></div>
+      <div class="splash-line" style="transform: rotate(9deg);"></div>
+      <div class="splash-line" style="transform: rotate(49deg);"></div>
+      <div class="splash-line" style="transform: rotate(75deg);"></div>
+    </div>
+  </div>
+  <div class="rain-drop" style="left: 79%; animation-duration: 1.45s; animation-delay: 0.31s;">
+    <div class="splash">
+      <div class="splash-line" style="transform: rotate(-85deg);"></div>
+      <div class="splash-line" style="transform: rotate(-55deg);"></div>
+      <div class="splash-line" style="transform: rotate(0deg);"></div>
+      <div class="splash-line" style="transform: rotate(21deg);"></div>
+      <div class="splash-line" style="transform: rotate(55deg);"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
